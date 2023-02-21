@@ -1,13 +1,50 @@
 ## Shell Parameter ##
 
 ## A parameter can be a name , a number , or one of the spcial characters listed below.
+### 3.1.2.4 ANSI_C Quoting ###
+
+```bash
+$ echo $'\a'   # Character sequences of the form $' string'
+$ echo $'\cc'   # a control-x chacter
+
+```
+### Local-Specific Translation ###
 ```bash
 
 ```
+
+### Reserved Words ###
+Reserved words are use to begin and end the shell's compound commands.
+```bash
+$ echo if then elif else fi
+$ echo time
+$ echo for in until while do done 
+$ echo case esac coproc select function
+$ echo { } [[ ]] !
+
+# in is recognized as a reserved word if it is the third word of a case or select in and do are recognized as reserved words if they are the third word in a for command
+$ if [ "$1" in ("cat", "dog", "moudse") ]; then echo "doola" fi
+syntax error 
+$ case "$1" in "cat") echo "d";;*) echo "s";; esac
+
+```
+
+
+### Piplelines ###
+```bash
+$ lsfd | grep b
+$ lsfd |& grep b   # l& is shorthand for 2>&1.
+$ time -p lsfd |& grep b  # time print the time once it finishes. -p changes output format to that specified by POSIX
+```
+
+
+
+
+
 ### 3.4.1 Positional Parameter ###
 
 ** A positional parameter is a parameter denoted by one or more digits, other than the single 0. **
-
+    
 ```bash
 $ set -- a b c d e f g h j k l m n # using the set builtin command reassigned
 $ echo $1           # N is only a single digit
