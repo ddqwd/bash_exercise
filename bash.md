@@ -118,4 +118,7 @@ $ echo ${1:7}
 
 ```
 
-
+## Bash Command ##
+```bash
+$ echo "12:ab" | cut -f 1 -d :
+```
